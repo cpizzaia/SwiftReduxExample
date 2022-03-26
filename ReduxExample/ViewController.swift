@@ -8,12 +8,16 @@
 import UIKit
 
 class ViewController: UIViewController {
-
   override func viewDidLoad() {
     super.viewDidLoad()
-    // Do any additional setup after loading the view.
+
+    let contentView = ViewControllerContentView()
+
+    view.addSubview(contentView)
+
+    contentView.snp.makeConstraints { make in
+      make.edges.equalToSuperview()
+    }
   }
-
-
 }
 
