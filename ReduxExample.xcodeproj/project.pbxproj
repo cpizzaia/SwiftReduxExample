@@ -21,6 +21,9 @@
 		ACC2213E27EF6E6A00DE6786 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACC2213D27EF6E6A00DE6786 /* ViewController.swift */; };
 		ACC2214327EF6E6E00DE6786 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ACC2214227EF6E6E00DE6786 /* Assets.xcassets */; };
 		ACC2214627EF6E6E00DE6786 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ACC2214427EF6E6E00DE6786 /* LaunchScreen.storyboard */; };
+		ACE5259027EF96290091DCAC /* UserSaga.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE5258F27EF96290091DCAC /* UserSaga.swift */; };
+		ACE5259327EF96650091DCAC /* UserSagaAddLastName.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE5259227EF96650091DCAC /* UserSagaAddLastName.swift */; };
+		ACE5259727EF97190091DCAC /* RootSaga.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE5259627EF97190091DCAC /* RootSaga.swift */; };
 		D7127AB4DBFEC6041C68E833 /* Pods_ReduxExample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C7CAB05FA95B5B0B3FA31C20 /* Pods_ReduxExample.framework */; };
 /* End PBXBuildFile section */
 
@@ -41,6 +44,9 @@
 		ACC2214227EF6E6E00DE6786 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		ACC2214527EF6E6E00DE6786 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		ACC2214727EF6E6E00DE6786 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		ACE5258F27EF96290091DCAC /* UserSaga.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSaga.swift; sourceTree = "<group>"; };
+		ACE5259227EF96650091DCAC /* UserSagaAddLastName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSagaAddLastName.swift; sourceTree = "<group>"; };
+		ACE5259627EF97190091DCAC /* RootSaga.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootSaga.swift; sourceTree = "<group>"; };
 		C4F08EC3B8363E7DF72A2818 /* Pods-ReduxExample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ReduxExample.release.xcconfig"; path = "Target Support Files/Pods-ReduxExample/Pods-ReduxExample.release.xcconfig"; sourceTree = "<group>"; };
 		C7CAB05FA95B5B0B3FA31C20 /* Pods_ReduxExample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ReduxExample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F81F41860039B4A3D346C233 /* Pods-ReduxExample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ReduxExample.debug.xcconfig"; path = "Target Support Files/Pods-ReduxExample/Pods-ReduxExample.debug.xcconfig"; sourceTree = "<group>"; };
@@ -131,6 +137,7 @@
 		ACC2213827EF6E6A00DE6786 /* ReduxExample */ = {
 			isa = PBXGroup;
 			children = (
+				ACE5258E27EF96140091DCAC /* Sagas */,
 				ACB88F5127EF8E4A00228C1F /* Actions */,
 				ACB88F4E27EF85EF00228C1F /* Reducers */,
 				ACB88F4727EF754B00228C1F /* Store */,
@@ -145,6 +152,24 @@
 				ACB88F4027EF708A00228C1F /* ViewControllerContentView.swift */,
 			);
 			path = ReduxExample;
+			sourceTree = "<group>";
+		};
+		ACE5258E27EF96140091DCAC /* Sagas */ = {
+			isa = PBXGroup;
+			children = (
+				ACE5259127EF96350091DCAC /* UserSagas */,
+				ACE5259627EF97190091DCAC /* RootSaga.swift */,
+			);
+			path = Sagas;
+			sourceTree = "<group>";
+		};
+		ACE5259127EF96350091DCAC /* UserSagas */ = {
+			isa = PBXGroup;
+			children = (
+				ACE5258F27EF96290091DCAC /* UserSaga.swift */,
+				ACE5259227EF96650091DCAC /* UserSagaAddLastName.swift */,
+			);
+			path = UserSagas;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -267,10 +292,13 @@
 				ACC2213E27EF6E6A00DE6786 /* ViewController.swift in Sources */,
 				ACB88F5327EF8E5500228C1F /* UserActions.swift in Sources */,
 				ACB88F4927EF759800228C1F /* StoreCreator.swift in Sources */,
+				ACE5259027EF96290091DCAC /* UserSaga.swift in Sources */,
 				ACB88F4327EF731800228C1F /* ReactiveView.swift in Sources */,
 				ACC2213A27EF6E6A00DE6786 /* AppDelegate.swift in Sources */,
 				ACB88F4127EF708A00228C1F /* ViewControllerContentView.swift in Sources */,
+				ACE5259327EF96650091DCAC /* UserSagaAddLastName.swift in Sources */,
 				ACB88F3F27EF704100228C1F /* main.swift in Sources */,
+				ACE5259727EF97190091DCAC /* RootSaga.swift in Sources */,
 				ACC2213C27EF6E6A00DE6786 /* SceneDelegate.swift in Sources */,
 				ACB88F4B27EF75BA00228C1F /* ReduxStore.swift in Sources */,
 			);

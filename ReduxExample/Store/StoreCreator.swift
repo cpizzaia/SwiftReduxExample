@@ -17,7 +17,14 @@ struct StoreCreator {
 
   // MARK: Public methods
   func create() -> ReduxStore {
-    return .init(rootReducer: rootReducer)
+    return .init(
+      rootReducer: rootReducer,
+      middleware: [createSagaMiddlware()]
+    )
+  }
+
+  private func createSagaMiddlware() -> StoreUpdateMiddleware {
+    RootSaga.saga
   }
 }
 

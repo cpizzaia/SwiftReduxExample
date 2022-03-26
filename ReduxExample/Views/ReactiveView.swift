@@ -10,7 +10,9 @@ import UIKit
 
 class ReactiveView: UIView, StoreSubscriber {
   // MARK: Private Properties
-  private let label = UILabel()
+  private let firstNameLabel = UILabel()
+  private let lastNameLabel = UILabel()
+  private let labelsContainer = UILabel()
 
   // MARK: Public Methods
   init(addObserver: AddStoreObserver = store.add(observer:)) {
@@ -27,24 +29,47 @@ class ReactiveView: UIView, StoreSubscriber {
 
   // MARK: Private Methods
   private func setupViews() {
-    setupLabel()
+    setupLabelsContainer()
+    setupFirstNameLabel()
+    setupLastNameLabel()
   }
 
-  private func setupLabel() {
-    addSubview(label)
+  private func setupLabelsContainer() {
+    addSubview(labelsContainer)
 
-    label.snp.makeConstraints { make in
+    labelsContainer.snp.makeConstraints { make in
       make.edges.equalToSuperview()
     }
+  }
 
-    label.font = .systemFont(ofSize: 22)
-    label.textColor = .black
+  private func setupFirstNameLabel() {
+    labelsContainer.addSubview(firstNameLabel)
+
+    firstNameLabel.snp.makeConstraints { make in
+      make.left.top.bottom.equalToSuperview()
+    }
+
+    firstNameLabel.font = .systemFont(ofSize: 22)
+    firstNameLabel.textColor = .black
+  }
+
+  private func setupLastNameLabel() {
+    labelsContainer.addSubview(lastNameLabel)
+
+    lastNameLabel.snp.makeConstraints { make in
+      make.centerY.right.equalToSuperview()
+      make.left.equalTo(firstNameLabel.snp.right)
+    }
+
+    lastNameLabel.font = .systemFont(ofSize: 22)
+    lastNameLabel.textColor = .black
   }
 
   // MARK: StoreObserver Methods
   func storeUpdated(fromAction action: Action, newState state: ReduxStore.State) {
     DispatchQueue.main.async {
-      self.label.text = UserSelectors.getName(state)
+      self.firstNameLabel.text = UserSelectors.getFirstName(state)
+      self.lastNameLabel.text = UserSelectors.getLastName(state)
     }
   }
 }

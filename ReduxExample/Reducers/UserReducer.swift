@@ -10,17 +10,20 @@ import Foundation
 enum UserReducer {
   // MARK: Public Types
   struct State {
-    let name: String?
+    let firstName: String?
+    let lastName: String?
   }
 
   // MARK: Private Static Properties
-  private static let defaultState: State = .init(name: nil)
+  private static let defaultState: State = .init(firstName: nil, lastName: nil)
 
   // MARK: Public Static Methods
   static let reducer: Reducer<State> = { state, action in
     switch action {
-    case let action as UserActions.UpdateName:
-      return .init(name: action.name)
+    case let action as UserActions.UpdateFirstName:
+      return .init(firstName: action.name, lastName: state?.lastName)
+    case let action as UserActions.UpdateLastName:
+      return .init(firstName: state?.firstName, lastName: action.name)
     default:
       return state ?? defaultState
     }
@@ -29,7 +32,11 @@ enum UserReducer {
 
 enum UserSelectors {
   // MARK: Public Static Methods
-  static func getName(_ state: ReduxStore.State) -> String? {
-    return state.user.name
+  static func getFirstName(_ state: ReduxStore.State) -> String? {
+    return state.user.firstName
+  }
+
+  static func getLastName(_ state: ReduxStore.State) -> String? {
+    return state.user.lastName
   }
 }

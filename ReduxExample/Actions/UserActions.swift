@@ -9,7 +9,11 @@ import Foundation
 
 
 enum UserActions {
-  struct UpdateName: Action {
+  struct UpdateFirstName: Action {
+    let name: String
+  }
+
+  struct UpdateLastName: Action {
     let name: String
   }
 }

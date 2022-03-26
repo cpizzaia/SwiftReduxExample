@@ -26,7 +26,7 @@ class UpdateNameButton: UIView {
   }
 
   @objc func tapped() {
-    dispatch(UserActions.UpdateName(name: "Cody"))
+    dispatch(UserActions.UpdateFirstName(name: "Cody"))
   }
 
   // MARK: Private Properties
