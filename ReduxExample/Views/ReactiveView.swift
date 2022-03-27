@@ -15,12 +15,17 @@ class ReactiveView: UIView, StoreSubscriber {
   private let labelsContainer = UILabel()
 
   // MARK: Public Methods
-  init(addObserver: AddStoreObserver = store.add(observer:)) {
+  init(
+    addObserver: AddStoreObserver = store.add(observer:),
+    state: ReduxStore.State = store.getState()
+  ) {
     super.init(frame: .zero)
 
     addObserver(self)
 
     setupViews()
+
+    updateFrom(state: state)
   }
 
   required init?(coder: NSCoder) {
@@ -65,11 +70,15 @@ class ReactiveView: UIView, StoreSubscriber {
     lastNameLabel.textColor = .black
   }
 
-  // MARK: StoreObserver Methods
-  func storeUpdated(fromAction action: Action, newState state: ReduxStore.State) {
+  private func updateFrom(state: ReduxStore.State) {
     DispatchQueue.main.async {
       self.firstNameLabel.text = UserSelectors.getFirstName(state)
       self.lastNameLabel.text = UserSelectors.getLastName(state)
     }
+  }
+
+  // MARK: StoreObserver Methods
+  func storeUpdated(fromAction action: Action, newState state: ReduxStore.State) {
+    updateFrom(state: state)
   }
 }
